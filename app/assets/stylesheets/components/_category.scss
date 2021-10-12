@@ -1,0 +1,126 @@
+.category-wrapper {
+  width: 275px;
+  padding:10px ;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  flex: 0 0 30%;
+  // width: 30%;
+}
+
+.category-selector {
+  position: absolute;
+  transform: scale(0);
+    vertical-align: middle;
+
+}
+
+.category-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  // font-size: 12px;
+  text-align: center;
+  // padding: 0;
+  // margin: 0;
+  border: 1px solid #EAEAEA;
+  border-radius: 4px;
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.category-selector:checked + label {
+  color: $my-navy !important;
+  background: $my-blue !important;
+}
+
+
+// #course_category_ + label {
+//   color: #e510b7;
+// }
+
+// #course_category:checked + label {
+//   background-color: #e510b7;
+//   border-color: #e510b7;
+// }
+
+
+// #course_category_it__software + label {
+//   color: #7a33cc;
+// }
+
+// #course_category_it__software:checked + label {
+//   background-color: #7a33cc;
+//   border-color: #7a33cc;
+// }
+
+
+// #course_category_how_it_works + label {
+//   color: #1be400;
+// }
+
+// #course_category_how_it_works:checked + label {
+//   background-color: #1be400;
+//   border-color: #1be400;
+// }
+
+// #course_category_language_learning + label {
+//   color: #f5a462;
+// }
+
+// #course_category_language_learning:checked + label {
+//   background-color: #f5a462;
+//   border-color: #f5a462;
+// }
+
+// #course_category_arts_and_humanities + label {
+//   color: #a5b100;
+// }
+
+// #course_category_arts_and_humanities:checked + label {
+//   background-color: #a5b100;
+//   border-color: #a5b100;
+// }
+
+// #course_category_business + label {
+//   color: #56b100;
+// }
+
+// #course_category_business:checked + label {
+//   background-color: #56b100;
+//   border-color: #56b100;
+// }
+
+// #course_category_physical_science_and_engineering + label {
+//   color: #00b18b;
+// }
+
+// #course_category_physical_science_and_engineering:checked + label {
+//   background-color: #00b18b;
+//   border-color: #00b18b;
+// }
+
+.courses-category-block {
+  position: relative;
+  display: flex;
+  height: 140px;
+  width: 100%;
+  background-color: white;
+  align-items: center;
+  align-content: space-around;
+  justify-content: center;
+}
+
+.course_category {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-evenly;
+}

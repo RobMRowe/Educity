@@ -1,0 +1,108 @@
+<body class="standardbod">
+<div class="team-dashboard">
+
+<div class="team-description">
+<% @user = current_user %>
+  <div class="team-course">
+  <div>
+  <h3 id="<%=@team.course.platform%>-h3"><%=@course.platform %></h3>
+
+</div>
+  <h1><%= @course.title %></h1>
+  <p>Data is everywhere. That means more companies are tracking, analyzing, and using the insights they find to make better decisions. In this Skill Path, you’ll learn the fundamentals of data analysis while building Python skills. </p>
+  <div class="team-meeting">
+    <div>
+      <p><%= @team.time_of_the_day%>:00 - <%= @team.time_of_the_day + @team.duration%>:00</p>
+      <h5>Upcoming Team Meeting</h5>
+      <p><%= @team.day_of_the_week %></p>
+    </div>
+    <%= render 'shared/zoom' %>
+  </div>
+  </div>
+
+
+
+  <div id= "team-participants-lg">
+    <%  StudentsTeam.where(team_id: @team.id).each do |st| %>
+
+          <span><%= cl_image_tag st.user.photo.key %></span>
+    <% end %>
+
+  </div>
+</div>
+
+<div class="right">
+
+
+
+<div class="chat">
+
+    <div >
+      <div class="chat-header clearfix">
+        <div class="chat-about">
+          <div class="chat-with"><h3>Chat</h3></div>
+        </div>
+      </div>
+     <div class="chat-history">
+        <ul>
+<% @messages.each do |message|%>
+  <% if message.user != @user %>
+            <li>
+            <div class="message-data">
+              <span class="message-data-name"><i class="fa fa-circle other"></i> <%= message.user.first_name%> </span>
+              <span class="message-data-time">
+                     <% if message.created_at.today? %>
+                <%= message.created_at.strftime(" Today %I:%M") %>
+                <% else %>
+                <%= message.created_at.strftime(" %a %I:%M") %>
+                <% end %>
+              </span>
+            </div>
+            <div class="message my-message">
+              <%= message.message %>
+            </div>
+          </li>
+
+  <% else %>
+
+          <li class="clearfix">
+            <div class="message-data align-right">
+              <span class="message-data-time" >
+                <% if message.created_at.today? %>
+                <%= message.created_at.strftime(" Today %I:%M") %>
+                <% else %>
+                <%= message.created_at.strftime(" %a %I:%M") %>
+                <% end %>
+              </span> &nbsp; &nbsp;
+              <span class="message-data-name" ><%= message.user.first_name%></span> <i class="fa fa-circle me"></i>
+
+            </div>
+            <div class="message other-message float-right">
+               <%= message.message %>
+            </div>
+          </li>
+  <% end %>
+<% end %>
+
+
+
+        </ul>
+
+      </div>
+
+
+      <div class="chat-message clearfix">
+           <%= simple_form_for @chat, url:  create_message_path do |form| %>
+          <%= form.text_field :message,  placeholder:"Type your message",html: {class: "textarea" ,id: "text-input"} %>
+          <%= form.submit "Send" ,class: "btn chat-botton" %>
+        <% end %>
+      </div>
+
+
+  </div>
+</div>
+
+</div>
+
+</div>
+</body>

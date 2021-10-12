@@ -1,0 +1,71 @@
+<div id="page-container" class="homepage">
+<div class="home-body">
+  <div class="home">
+    <div class="banner">
+      <div id="banner-text">
+        <h1 class="home-welcome">Welcome to Educity,</h1>
+        <h1 class="home-welcome">the Learners' Community</h1>
+        <p >Join a  <span style="background: #E4DE5F">team of learners</span> interested in the same topic as you are. Study together,
+        help and motivate each other. A natural and fun way to keep each other
+        <span style="background: #E4DE5F">accountable</span>!
+        Get inspired by other learners' curriculum and broaden your horizons.
+      </p>
+      </div>
+      <%= image_tag 'home_image-1.svg', width: 500 %>
+  </div>
+
+  </div>
+
+  <div class="bottom-home">
+      <h2 class='top-courses'>Top Picks</h2>
+
+      <h3>Recently Added</h3>
+
+
+  <div class="course-list-home">
+    <div class="course-list-recent">
+      <ul class="post-row">
+      <% @new_courses.each do |course| %>
+        <span class="post">
+          <%= link_to new_questionnaire_path(course) do %>
+            <li>
+              <div class="post-top">
+                <p class ="post-cat"><%= course.category %> </p>
+                 <% dif = ((DateTime.now.to_time-course.created_at.to_time ) / 1.hours).round %>
+                <p class="post-pop">Created <%= dif %> hour<%='s' if dif > 1 %> ago</p>
+              </div>
+              <h3 class="post-text"><%= course.title %></h3>
+              <p style="font-weight:600" class="post-platform"><%= course.platform.capitalize %></p>
+            </li>
+          <% end %>
+        </span>
+      <% end %>
+      </ul>
+    </div>
+      <h3>Most Popular</h3>
+
+    <div class="course-list-popular">
+      <ul class="post-row">
+      <% @popular_courses.each do |course| %>
+        <span class="post">
+          <%= link_to new_questionnaire_path(course) do %>
+            <li>
+              <div class="post-top">
+                <p class ="post-cat"><%= course.category %> </p>
+                <p class="post-pop"><%= course.users.count %> learners</p>
+              </div>
+              <h3 class="post-text"><%= course.title %></h3>
+              <p style="font-weight:600" class="post-platform"><%= course.platform.capitalize %></p>
+            </li>
+          <% end %>
+        </span>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+

@@ -1,0 +1,64 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon ">
+  <%= link_to  "Educity", root_path, class: "navbar-brand" , id: "logo"  %>
+
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+   <div class="box">
+ <!--         <form name="search">
+   -->          <%= simple_form_for :search, url: courses_path , method: 'GET', html: {class: 'form-inline'} do |f| %>
+
+  <%= f.input :title, label: '', input_html: { value: "", placeholder: "Search for a course...", class: "navsearch" } %>
+<% end %>
+
+
+           <!--  <input type="text" class="input" name="txt"
+            onmouseout="document.search.txt.value = ''"> -->
+  <!--         </form>
+ -->            <i class="fas fa-search"></i>
+    </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+<% notifications = Notification.where(user_id: current_user , alert:true).last %>
+    <ul class="navbar-nav mr-auto">
+      <% if user_signed_in? %>
+
+<% unless notifications.nil? %>
+      <li class="nav-item dropdown">
+        <div class="dropleft">
+          <i class="fas fa-bell " id="bellDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bellDropdown">
+            <%= link_to "", "#" , class: "dropdown-item" %>
+            <%= link_to "New message", dashboard_path(notifications.team_id), class: "dropdown-item"  %>
+              </div>
+        </div>
+      </li>
+  <% end %>
+
+        <li class="nav-item dropdown">
+          <% @user = current_user %>
+          <% if @user.photo.attached? %>
+              <%= cl_image_tag @user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+              <%= image_tag "https://cdn.dribbble.com/users/230875/screenshots/12138332/media/e7333ea2756909de0b68a1ac111b9011.jpg?compress=1&resize=1200x1200",
+              class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
+
+
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+            <%= link_to "My dashboard", students_teams_path , class: "dropdown-item" %>
+            <%= link_to "My Profile", "#", class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Log In", new_user_session_path, class: "btn btn-info" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+.subcategory-item {
+  display: inline-block;
+}
+
+.subcategory-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.subcategory-selector + label {
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 50rem;
+  padding: 0.1rem 0.5rem;
+  background-color: $my-lilac;
+  color: $my-dark-lilac;
+  border: 1px solid rgba($my-dark-lilac, 0.3);
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+  min-width: 100%;
+  text-align: center;
+}
+
+.subcategory-selector:checked + label {
+  background-color: $my-dark-lilac;
+  color: white;
+}
+
+.courses-subcategories-block {
+  margin-top: 20px;
+  padding:20px;
+  position: relative;
+  display: flex;
+  height: 300px;
+  overflow: scroll;
+  width: 250px;
+  background-color: white;
+  align-items: center;
+  align-content: space-around;
+  justify-content: center;
+}
+
+.course_subcategories {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-evenly;
+}

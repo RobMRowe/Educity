@@ -1,0 +1,229 @@
+#searchbody{
+  background: $my-navy;
+}
+
+
+// #searchbody{
+//   background-color: $my-navy;
+// }
+.filter-form{
+  border-radius: 15px;
+  border: 2px solid #eee;
+  position:absolute;
+  top:150px;
+  left:75px;
+  padding: 16px;
+  height: 80vh;
+  background-color:white;
+  width: 300px;
+  margin-right: 100px;
+  box-shadow:var(--box-shadow);
+}
+.new-course-q {
+  width:650px;
+  color:$my-navy;
+  background-color: $my-yellow;
+  padding: 1rem;
+  margin-left:10px;
+}
+
+.button {
+  margin-top:1rem;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.courses-container {
+  padding: 40px 10px;
+  margin-top:50px;
+  margin-right:60px;
+  display: flex;
+  align-items: space-between;
+  justify-content: center;
+  overflow: hidden;
+  flex-direction: row;
+}
+
+.post > a {
+  color: $my-navy !important;
+  text-decoration:none;
+}
+
+#Coursera {
+  border-left: 4px solid $coursera;
+}
+
+#Udemy {
+  border-left: 4px solid $udemy;
+}
+
+#Codecademy{
+  border-left: 4px solid $codecademy;
+}
+
+.course-list{
+  width:650px;
+}
+.post {
+  color: my-navy !important;
+  display: block;
+  margin-bottom: 16px;
+  border-radius:5px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  width: 650px;
+  position: relative;
+  padding: 1rem;
+  background-color: white;
+  cursor: pointer;
+  &:before {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #EAE7FD;
+    border-radius:5px;
+    transform-origin: 0 bottom 0;
+    transform: scaleY(0);
+    transition: .4s ease-out;
+  }
+  .post-top {
+    width:608px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:10px;
+  }
+
+  ul {
+    padding-left: 0 !important;
+  }
+  ul.aa {
+    list-style-type: none;
+  }
+  &:hover {
+    .post-text {
+      color: $my-navy;
+    }
+    .post-platform {
+      color: $my-navy;
+    }
+    &:before {
+      transform: scaleY(1);
+    }
+  }
+}
+
+.courses-container > ul {
+  list-style-type:none;
+}
+
+.post-platform {
+  position: relative;
+  font-weight: 300;
+  line-height: 1.333;
+  transition: .4s ease-out;
+}
+
+.post-text {
+  position: relative;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.333;
+  transition: .4s ease-out;
+}
+
+.post-link, .post-top {
+  position: relative;
+  line-height: 1.333;
+  transition: .4s ease-out;
+}
+
+.post-pop {
+  background-color: $my-yellow;
+  color: $my-dark-yellow;
+  border-radius: 5px;
+  padding: 6px 6px;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.post-cat {
+  background-color: $my-green;
+  color: $my-navy;
+  border-radius: 5px;
+  padding: 6px 6px;
+  font-weight: 400;
+  font-size: 10px;
+}
+
+.weblink {
+  color: $my-navy;
+}
+
+.weblink:hover{
+  text-decoration: none;
+  color: $my-navy;
+}
+
+.courses-filter-form form {
+  // width:500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subcategory-hidden {
+  transform: scale(0);
+  position: absolute;
+  top: 0;
+}
+
+.category-hidden {
+  transform: scale(0);
+  position: absolute;
+  top: 0;
+}
+
+.platform-hidden {
+  transform: scale(0);
+  position: absolute;
+  top: 0;
+}
+
+.reset-hidden {
+  transform: scale(0);
+  position: absolute;
+  top: 0;
+}
+
+#url {
+  border: 2px solid white !important;
+  border-bottom: 3px solid $my-green !important;
+  width:100%;
+}
+
+#addcourse {
+    width:100%;
+    margin: 20px 0;
+}
+
+#createcourse {
+    margin-left:0;
+    margin-right:0;
+    height:auto;
+    width:auto;
+}
+
+#reset {
+    color: darken($my-lilac, 15%);
+  &:hover{
+    color:darken($my-lilac, 30%);
+    cursor:pointer;
+  }
+}

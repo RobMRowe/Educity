@@ -1,0 +1,70 @@
+<body class="standardbod">
+
+<div class="dashboard-container">
+  <div>
+  <div class="calendar-container">
+  <%= month_calendar(events: @meetings, end_attribute: :end_time) do |date, meetings| %>
+    <%= date %>
+<div id="meetings">
+    <% meetings.each do |meeting| %>
+    <% t = meeting.team %>
+      <div class="meeting" id="<%= t.course.platform%>">
+<!--         <p class="course-title"><%= meeting.name %></p>
+        <% both_meridians = meeting.start_time.hour < 12 && meeting.end_time > 12 %>
+        <% meeting_time = "#{meeting.start_time.strftime('%l:%M').strip}#{'am' if both_meridians}-#{meeting.end_time.strftime('%l:%M%P').strip}" %>
+        <p class="course-time"><%= meeting_time %></p> -->
+      </div>
+          <% end %>
+</div>
+  <% end %>
+</div>
+<div class="meet-list">
+<%  @meeting_list[0..5].each do |m| %>
+<%= link_to dashboard_path(m.team) , :action => 'go' do %>
+
+<div class="meet-deets" id="<%= m.team.course.platform%>">
+  <div class="day-meet">
+    <span id="daynum">
+    <%= m.start_time.day %>
+  </span>
+     <%= m.start_time.strftime("%a") %>
+  </div>
+  <div class="title-meet">
+    <%= m.team.course.title %>
+  </div>
+   <span>
+    <%= m.start_time.strftime("%l:00%p")  %>
+     </span>
+</div>
+  <% end %>
+  <% end %>
+</div>
+</div>
+
+<div class="courses-list">
+  <h3>My Courses</h3>
+  <% @teams.each do |t| %>
+  <% team = t.team %>
+
+  <div class="course-card" id="<%=team.course.platform%>">
+                  <%= link_to dashboard_path(team) , :action => 'go' do %>
+
+    <div class="top-course">
+      <p class="teams-meeting"><strong><%= team.start_date.strftime('%A') %>s</strong> @ <strong><%= team.time_of_the_day %>:00</strong>, <strong><%= team.duration %> hour<%= 's' if team.duration != 1 %></strong></p>
+      <p class ="post-cat"><%= team.course.category %> </p>
+    </div>
+    <h3 class="post-text"><%= team.course.title %></h3>
+     <p style="font-weight:600" class="post-platform"><%= team.course.platform.capitalize %></p>
+            <div id="team-participants">
+        <% team.users.each do |user| %>
+          <span><%= cl_image_tag user.photo.key %></span>
+        <% end %>
+      </div>
+          <% end %>
+
+    </div>
+  <% end %>
+</div>
+</div>
+</body>
+

@@ -1,0 +1,119 @@
+<body class="standardbod">
+<div class="courses-container">
+  <div class="filter-form">
+  <div class="courses-filter-form">
+    <%= simple_form_for :course do |f| %>
+      <%= f.input :platform,
+                  label: '',
+                  as: :radio_buttons,
+                  collection_wrapper_tag: 'div',
+                  collection_wrapper_class: 'platform-wrapper',
+                  item_wrapper_class: 'platform-item',
+                  input_html: {class: 'platform-selector'},
+                  collection: @platforms %>
+      <div class="courses-category-block">
+        <% @categories.each do |category| %>
+          <%= f.input :category,
+                      as: :radio_buttons,
+                      label: '',
+                      collection_wrapper_tag: 'div',
+                      collection_wrapper_class: 'category-wrapper',
+                      item_wrapper_class: "category-item platform-hidden category-item-#{category[0]}",
+                      input_html: {class: 'category-selector'},
+                      collection: category[1] %>
+        <% end %>
+      </div>
+      <div class="courses-subcategories-block">
+        <% @subcategories.each do |subcat| %>
+          <%= f.input :subcategories,
+                      as: :check_boxes,
+                      label: '',
+                      input_html: { class: "subcategory-selector", checked: true },
+                      item_wrapper_class: "subcategory-item category-hidden subcategory-item-#{subcat[0]}",
+                      collection: subcat[1] %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+    <button class='btn reset-filters reset-hidden' id='reset' >Reset subcategory filters</button>
+  </div>
+  <div class="course-list">
+  <ul>
+        <% @user = current_user %>
+
+    <% @courses.each do |course| %>
+
+    <%# if !@user.courses.include?(course) %>
+
+      <% subcatlist = [] %>
+      <% course.subcategories.each do |subcat| %>
+        <% subcatlist << "post-subcat-#{subcat.downcase.gsub(/\W/, '')}" %>
+      <% end %>
+      <% subcats = subcatlist.join(' ') %>
+
+      <span class="post post-category-<%= course.category.downcase.gsub(/\W/, '') %> post-platform-<%= course.platform.downcase.gsub(/\W/, '') %> <%= subcats %>" id="<%= course.platform %>">
+
+        <%= link_to new_questionnaire_path(course)do %>
+          <li>
+            <div class="post-top">
+              <p class ="post-cat"><%= course.category %> </p>
+              <p class="post-pop"><%= course.users.count %> learners</p>
+            </div>
+            <h3 class="post-text"><%= course.title %></h3>
+            <p style="font-weight:600" class="post-platform"><%= course.platform.capitalize %></p>
+          </li>
+        <% end %>
+
+      </span>
+
+      <%# else %>
+<!--             <%# subcatlist = [] %>
+      <%# course.subcategories.each do |subcat| %>
+        <% #subcatlist << "post-subcat-#{subcat.downcase.gsub(/\W/, '')}" %>
+      <% #end %>
+      <%# subcats = subcatlist.join(' ') %>
+      <span class="post post-category-<%= course.category.downcase.gsub(/\W/, '') %> <%= subcats %>" id="<%= course.platform %>" style="color: #0E3959" >
+          <li class="sweet-alert">
+            <div class="post-top">
+              <p class ="post-cat"><%= course.category %> </p>
+              <p class="post-pop"><%= course.users.count %> learners</p>
+            </div>
+            <h3 class="post-text"><%= course.title %> </h3>
+             <p style="font-weight:600" class="post-platform"><%= course.platform.capitalize %></p>
+          </li>
+      <%# end %>
+      </span> -->
+
+          <% end %>
+
+    <li>
+<div class="new-course-q">
+        <h3> Couldn't find the course you were looking for ? </h3>
+        <p>Add it to the list, we promise it's easy.</p>
+        <div class="button">
+          <button class="btn btn-primary" data-toggle="modal" data-target="#createcourseModal">+</button>
+        </div>
+    </li>
+  </ul>
+</div>
+</div>
+</body>
+
+<!-- Modal -->
+<div class="modal fade" id="createcourseModal" tabindex="-1" role="dialog" aria-labelledby="createcourseModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h3 class="modal-title">Told you 👀 </h3>
+        <p>To help broaden Educity's horizons, simply enter the link of the course.</p>
+      </div>
+      <div class="modal-input" id="createcourse">
+        <%= form_with url: create_course_path do |form| %>
+          <%= form.text_field :url %>
+          <%= form.submit "Add Course", class: 'btn btn-primary', id:'addcourse' %>
+        <% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

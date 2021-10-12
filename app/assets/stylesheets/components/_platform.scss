@@ -1,0 +1,91 @@
+.platform-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width:250px;
+
+}
+
+.platform-item {
+  flex: 0 0 30%;
+}
+
+.platform-selector {
+  // margin:10px;
+  position: absolute;
+  transform: scale(0);
+}
+
+.platform-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  padding: 8px ;
+   margin-bottom: 15px;
+
+  // border: 1px solid #EAEAEA;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.platform-selector:checked + label {
+  color: white !important;
+}
+
+
+#course_platform_codecademy + label {
+  color: $codecademy;
+    border: 2px solid $codecademy !important;
+
+}
+
+#course_platform_codecademy:checked + label {
+  background-color: $codecademy;
+  border: 2px solid $codecademy !important;
+}
+
+
+// #course_platform_datacamp + label {
+//   color: #33AACC;
+// }
+
+// #course_platform_datacamp:checked + label {
+//   background-color: #33AACC;
+//   border-color: #33AACC;
+// }
+
+
+#course_platform_coursera + label {
+  color: $coursera;
+    border: 2px solid $coursera !important;
+
+}
+
+#course_platform_coursera:checked + label {
+  background-color: $coursera;
+  border: 2px solid $coursera !important;
+}
+
+#course_platform_udemy + label {
+  color: $udemy;
+        border: 2px solid $udemy !important;
+
+}
+
+#course_platform_udemy:checked + label {
+  background-color: $udemy;
+      border: 2px solid $udemy !important;
+
+}
+
+
+// #course_platform_linkedinlearning + label {
+//   color: #0073b1;
+// }
+
+// #course_platform_linkedinlearning:checked + label {
+//   background-color: #0073b1;
+//   border-color: #0073b1;
+// }

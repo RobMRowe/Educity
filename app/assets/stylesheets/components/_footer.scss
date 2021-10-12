@@ -1,0 +1,50 @@
+.footer {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+  width: 100%;
+  color: #313131
+}
+.socmed:hover{
+  color:#989898;
+}
+footer > p {
+  margin: 2rem;
+}
+
+footer i {
+  vertical-align: middle;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+
+.footer-links a {
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+
+.footer-link {
+  font-size: 25px;
+  color: $my-navy;
+  text-decoration: none;
+  &:hover {
+    color: $my-dark-lilac;
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.text-center {
+ text-align: center;
+}

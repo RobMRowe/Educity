@@ -1,0 +1,55 @@
+.modal-content {
+  border-radius:10px;
+}
+.modal-content{
+  padding: 0 40px 60px 40px;
+  border: 1px solid white !important;
+
+}
+
+.close {
+  padding: 16px 0 !important;
+}
+
+.modal-input{
+  padding-top: 20px;
+}
+
+.modal-header{
+  display:flex;
+  flex-direction:column;
+  color: $my-navy;
+}
+.modal-header {
+  justify-content:left;
+}
+
+#team_start_date{
+  background-color:white;
+}
+.f-input > input{
+  background-color:white !important;
+  border: 1px solid #eee !important;
+  color: black !important;
+}
+
+.form-control:disabled, .form-control[readonly] {
+  background-color: white !important;
+}
+
+.tm-btn > .btn{
+   margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+#new-team-form{
+width: 700px;
+margin-left:auto;
+margin-right:auto;
+padding: 40px;
+}
+
+.datepicker {
+  background-color:white !important;
+}

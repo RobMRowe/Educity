@@ -1,0 +1,72 @@
+<body class="standardbod">
+<div class="teams">
+  <% @teams.each do |team| %>
+  <%  meet_time = 'mornings' if (7..11).include?(team.time_of_the_day) %>
+  <%  meet_time = 'lunchtimes' if (12..14).include?(team.time_of_the_day) %>
+  <%  meet_time = 'afternoons' if (15..17).include?(team.time_of_the_day) %>
+  <%  meet_time = 'evenings' if (18..22).include?(team.time_of_the_day) %>
+  <%  meet_time = 'nights' if (0..6).include?(team.time_of_the_day) %>
+    <div class="card-teams" >
+      <p class="teams-meeting"><strong><%= team.duration %> hour</strong> meetings</p>
+      <p class="teams-meeting"><strong><%= team.start_date.strftime('%A') %> <%= meet_time %></strong></p>
+      <% both_meridians = team.start_date.hour < 12 && (team.start_date + (team.duration * 3600)).hour > 12 %>
+      <% meeting_time = "#{team.start_date.strftime('%l:%M').strip}#{'am' if both_meridians}-#{(team.start_date + (team.duration * 3600)).strftime('%l:%M%P').strip}" %>
+      <p class="teams-meeting"><strong><%= meeting_time %></strong></p>
+
+      <div id="team-participants">
+        <% team.users.each do |user| %>
+          <span><%= cl_image_tag user.photo.key %></span>
+        <% end %>
+      </div>
+      <%= simple_form_for :students_team, url: students_team_join_path(team), method: 'post', html: {class: 'btn-join'} do |f| %>
+        <%= f.button :submit, class: 'btn btn-primary', value: 'Join',width: 50, height: 50, crop: :fill %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="teams-options">
+  <h3>Couldn't find a team with a suitable time slot ?</h3>
+  <h5>Why not <span id="createteam" style="font-family:Roboto; font-weight:900"  data-toggle="modal" data-target="#createteamModal" >create your own</span></h5>
+
+
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="createteamModal" tabindex="-1" role="dialog" aria-labelledby="createteamModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h3 class="modal-title">Awesome 👏</h3>
+        <h3 class="modal-title">Let's create a new team.</h3>
+
+
+      </div>
+      <div class="modal-input">
+      <%= simple_form_for @team, url:  create_team_path(@course)  do |f| %>
+      <%= f.input :day_of_the_week,
+              as: :radio_buttons,
+              collection: Team::DAY_OF_THE_WEEK, value_method: :first, label_method: :second,
+              collection_wrapper_tag: 'div',
+              collection_wrapper_class: 'days-wrapper',
+              item_wrapper_class: 'platform-item',
+              input_html: {class: 'quizz-css'}%>
+
+      <%= f.input :time_of_the_day, as: :integer %>
+
+      <%= f.input :duration,
+              as: :numeric %>
+      <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <div class="tm-btn"><%= f.submit "Submit", class: "btn btn-primary" %></div>
+
+
+
+      <% end %>
+    </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</body>

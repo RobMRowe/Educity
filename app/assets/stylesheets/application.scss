@@ -1,0 +1,112 @@
+// Graphical variables
+@import "config/fonts";
+@import "config/colors";
+@import "config/bootstrap_variables";
+
+// External libraries
+@import "bootstrap/scss/bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+// Your CSS partials
+@import "components/index";
+@import "pages/index";
+@import "pages/teams";
+@import "pages/dashboard";
+@import "pages/courses";
+@import "pages/questionnaire";
+@import "pages/user";
+@import "pages/teamform";
+@import "pages/chat";
+@import "pages/signin";
+
+
+@import "components/buttons";
+@import "components/platform";
+@import "components/category";
+@import "components/funbutton";
+@import "components/navsearch";
+@import "components/subcategory";
+@import "components/calendar";
+
+
+@import "components/map";
+@import "flatpickr/dist/flatpickr";
+@import "simple_calendar";
+
+
+:root{
+--box-shadow: 5px 5px 5px  rgba(100,100,100, 0.1);
+}
+
+.standardbod{
+  background-color:$my-beige;
+}
+.col-form.label {
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight:600;
+}
+
+h3 {
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight:600;
+}
+
+html, body {
+   margin: 0;
+   padding: 0;
+   height: 100%;
+   font-weight:300;
+}
+
+#page-container {
+  margin: 0;
+  min-height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+#header {
+  top: 0;
+}
+
+#main-content {
+  padding-top:50px;
+  min-height: calc(100vh - 100px);
+}
+
+#footer {
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   height: 100px;
+}
+
+h1 {
+  font-size: 36px;
+  font-family: Roboto;
+  font-weight:600;
+}
+
+p {
+  font-size: 18px;
+  margin:0;
+}
+
+
+h3#Codecademy-h3{
+  color: $codecademy
+}
+
+
+h3#Udemy-h3{
+  color: $udemy;
+}
+
+
+h3#Coursera-h3{
+  color: $coursera;
+}

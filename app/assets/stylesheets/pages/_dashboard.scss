@@ -1,0 +1,60 @@
+div.courses-list{
+  margin-left:200px;
+}
+.dashboard-container {
+    display: flex;
+    padding: 0 30px;
+
+}
+
+.team-dashboard {
+height:90vh;
+ display: flex;
+ // height: 100vh;
+ overflow: hidden;
+ margin: 60px auto;
+ top:70px;
+ color:$my-navy;
+
+}
+
+.team-description {
+height:90vh;
+ padding: 40px 40px 80px 80px;
+ width: 700px;
+ // margin-bottom:75px;
+
+ justify-content:space-between;
+ display: flex;
+ flex-direction: column;
+ flex-shrink: 0;
+ overflow: auto;
+}
+
+div#team-participants-lg {
+  bottom-margin: 75px;
+}
+
+#team-participants-lg img {
+  margin-right:10px;
+     &:hover {
+    transform: scale(1.2);
+    transition-duration:0.3s;
+  }
+}
+
+.team-meeting{
+  box-shadow:var(--box-shadow);
+
+  margin-top:25px;
+  padding:25px;
+  background-color: white;
+  justify-content:space-between;
+ display: flex;
+   &:hover {
+    transform: scale(1.025);
+    transition-duration:0.3s;
+  }
+
+}
+
