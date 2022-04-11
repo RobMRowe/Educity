@@ -1,7 +1,8 @@
-.questionnaire{
+.questionnaire {
   background: linear-gradient(-45deg, $my-mustard, $my-yellow, $my-blue, $my-lilac, $my-green);
   background-size: 400% 400%;
-  animation: gradient 15s ease infinite;}
+  animation: gradient 15s ease infinite;
+}
 
   @keyframes gradient {
   0% {
@@ -14,11 +15,13 @@
     background-position: 0% 50%;
   }
 }
+
 .days-wrapper {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
 .quizz-wrapper{
  // display: flex;
   justify-content: space-between;
@@ -29,6 +32,7 @@
   position: absolute;
   transform: scale(0);
 }
+
 .quizz-css +label {
   margin-bottom:15px;
     display: block;
@@ -44,25 +48,19 @@
   &:hover{
       background-color:$my-lilac;
       transition: 0.5s;
-
   }
 }
 
-.quizz-days {
-  // top:-150px;
-}
 .quizz-css:checked + label {
   color: $my-dark-lilac !important;
   background-color:$my-lilac;
 }
-
 
 .timeline {
   // background-color: $my-lilac;
   height: 100vh;
   overflow: hidden;
 }
-
 
 .quizz{
   padding:10px 40px;
@@ -102,6 +100,7 @@
   padding-right: 5.33333%;
   letter-spacing: 1px;
 }
+
 .timeline_label:before {
   content: "";
   position: absolute;
@@ -143,6 +142,7 @@
   top: 45px;
   border-bottom: 6px #eee solid;
 }
+
 .timeline_line:before {
   content: "";
   position: absolute;
@@ -158,9 +158,11 @@
 .timeline_input[type=radio] {
   display: none;
 }
+
 .timeline_input[type=radio]:checked + .timeline_label {
   color: #525252;
 }
+
 .timeline_input[type=radio]:checked + .timeline_label:before {
   background-color: $my-green;
   border-color: $my-green;
@@ -168,6 +170,7 @@
   -webkit-animation: part 1.6s infinite ease-in-out;
   animation: part 1.6s infinite ease-in-out;
 }
+
 .timeline_input[type=radio]:checked + .timeline_label + .timeline_info {
   -moz-transform: translateY(15%);
   -ms-transform: translateY(15%);
@@ -175,12 +178,15 @@
   transform: translateY(15%);
   opacity: 1;
 }
+
 .timeline_input[type=radio]:checked:nth-of-type(1) + .timeline_label + .timeline_info + .timeline_input + .timeline_label + .timeline_info + .timeline_input + .timeline_label + .timeline_info + .timeline_line:before {
   width: 33%;
 }
+
 .timeline_input[type=radio]:checked:nth-of-type(2) + .timeline_label + .timeline_info + .timeline_input + .timeline_label + .timeline_info + .timeline_line:before {
   width: 63%;
 }
+
 .timeline_input[type=radio]:checked:nth-of-type(3) + .timeline_label + .timeline_info + .timeline_line:before {
   width: 100%;
 }
